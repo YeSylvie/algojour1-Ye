@@ -41,7 +41,7 @@ class Block:
         return self
 
     def __str__(self):
-        return "\tPrivous Hash : " + self.previous_hash \
+        return "\tPrevious Hash : " + self.previous_hash \
             + "\n\tData : " + self.data \
             + "\n\tSignature : " + self.signature \
             + "\n\tPreuve de travail : " + self.preuve_travail \
