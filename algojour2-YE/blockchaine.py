@@ -20,7 +20,7 @@ class Blockchaine:
         for i in range(len(self.blockchaines)):
             if i == 0:
                 is_valid = is_valid and self.blockchaines[i].is_format_hash_ok(self.blockchaines[i].hash, self.nbr_zero)
-            else :
+            else:
                 is_valid = is_valid and self.blockchaines[i].is_format_hash_ok(self.blockchaines[i].previous_hash, self.nbr_zero)
                 is_valid = is_valid and self.blockchaines[i].is_format_hash_ok(self.blockchaines[i].hash, self.nbr_zero)
         return is_valid
@@ -69,7 +69,7 @@ class Blockchaine:
             if choix == "a":
                 print(blockchaine)
             elif choix == "s":
-                save(blockchaine)
+                self.blockchaines.save()
             elif choix == "x":
                 data = input("Taper votre donnée : ")
                 signature = input("Taper votre signature : ")
@@ -78,9 +78,10 @@ class Blockchaine:
                 print(blockchaine.menu())
             elif choix == "q":
                 print("Au revoir !")
-            else :
+            else:
                 print("Choix incorrect")
                 self.blockchaines.menu()
+
 
 blockchaine = Blockchaine(2)
 print(blockchaine.menu())

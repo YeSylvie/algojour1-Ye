@@ -37,7 +37,7 @@ class Block:
             nounce += 1
             new_preuve_travail = self.generate_preuvre_travail()
             bloc = str(self.previous_hash) + str(self.data) + str(self.signature) + str(new_preuve_travail) \
-            + str(self.creation_date)
+                + str(self.creation_date)
             hash_block = sha256(bloc.encode('utf-8')).hexdigest()
         self.hash = hash_block
         self.nounce = nounce
