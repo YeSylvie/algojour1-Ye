@@ -1,3 +1,5 @@
+# import block
+
 class File:
     def __init__(self):
         self.name = "blockchaine"
@@ -10,8 +12,10 @@ class File:
         print("Sauvegarde réussie ! ")
 
     def read(self):
-        f = open(self.name + ".txt", "r")
-        existing_blockchaine = f.read()
-        print(existing_blockchaine)
-        f.close()
-        return existing_blockchaine
+        try:
+            f = open(self.name + ".txt", "r")
+            existing_blockchaine = f.read()
+            f.close()
+            return existing_blockchaine
+        except IOError:
+            return ""
