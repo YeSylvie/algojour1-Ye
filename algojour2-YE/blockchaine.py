@@ -1,38 +1,37 @@
 import block
 
-class BlockChaine:
-    def __init__(self):
-        self.blockchaine = []
 
-    def addBlock(self, nbrZero, data):
-        if not self.blockchaine:
-            newBlock = block.Block("NONE", data, "Crée par", "preuveTravail")
+class Blockchaine:
+    def __init__(self):
+        self.blockchaines = []
+
+    def add_block(self, nbr_zero, data):
+        if not self.blockchaines:
+            new_block = block.Block("NONE", data, "Crée par", "preuveTravail")
         else:
-            previousHash = self.blockchaine[len(self.blockchaine)-1].hash
-            newBlock = block.Block(previousHash, data, "Crée par", "preuveTravail")
-        newBlock = newBlock.createHash(nbrZero)
-        self.blockchaine.append(newBlock)
-    
+            previous_hash = self.blockchaines[len(self.blockchaines) - 1].hash
+            new_block = block.Block(previous_hash, data, "Crée par", "preuveTravail")
+        new_block = new_block.create_hash(nbr_zero)
+        self.blockchaines.append(new_block)
 
     def __str__(self):
         result = ""
-        if not self.blockchaine:
+        if not self.blockchaines:
             return "Aucun élément dans la liste."
-        for i in range(len(self.blockchaine)):
-            result += "Element n° "
+        for i in range(len(self.blockchaines)):
+            result += "Block n° "
             result += str(i)
             result += " : [\n" 
-            result += str(self.blockchaine[i]) 
+            result += str(self.blockchaines[i])
             result += "\n]\n" 
         return result
 
 
-blockchaine = BlockChaine()
+blockchaine = Blockchaine()
 print("***** TESTE SANS AJOUT ********")
 print(blockchaine)
 print("***** TESTE AJOUT ********")
-blockchaine.addBlock(2, "Genesis block")
-blockchaine.addBlock(2, "First block")
-blockchaine.addBlock(2, "Second block")
+blockchaine.add_block(2, "Genesis block")
+blockchaine.add_block(2, "First block")
+blockchaine.add_block(2, "Second block")
 print(blockchaine)
-
