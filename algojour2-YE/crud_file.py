@@ -1,5 +1,3 @@
-# import block
-
 class File:
     def __init__(self):
         self.name = "blockchaine"
