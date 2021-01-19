@@ -1,0 +1,12 @@
+3
+Blockchaine vérifiée : True
+Block n° 0 : [
+	Index : 0
+	Previous Hash : NONE
+	Data : C
+	Signature : Crée par C
+	Preuve de travail : dnVkviJf
+	Creation Date : 2021-01-19 18:15:02.694541
+	Hash : 0006a6d3bcf7cfaf4902ff7f414f032e3453185d4ba6fd81399f74861407730c
+	Nounce : 2923
+]

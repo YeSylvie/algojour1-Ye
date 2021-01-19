@@ -1,19 +1,18 @@
 import random
 import string
 from hashlib import sha256
-from datetime import datetime
 
 
 class Block:
-    def __init__(self, previous_hash, data, signature, preuve_travail, index):
+    def __init__(self, previous_hash, data, signature, preuve_travail, creation_date, main_hash, index, nounce):
         self.previous_hash = previous_hash
         self.data = data
         self.signature = signature
         self.preuve_travail = preuve_travail
-        self.creation_date = datetime.now()
-        self.hash = ""
+        self.creation_date = creation_date
+        self.hash = main_hash
         self.index = index
-        self.nounce = 0
+        self.nounce = nounce
 
     @staticmethod
     def is_format_hash_ok(hash_block, nbr_zero):

@@ -1,17 +1,38 @@
 import block
+import crud_file
+from datetime import datetime
 
 
 class Blockchaine:
     def __init__(self, nbr_zero):
-        self.blockchaines = []
-        self.nbr_zero = nbr_zero
+        file = crud_file.File()
+        existing_file = file.read()
+        if "Aucun élément dans la liste." in existing_file:
+            self.blockchaines = []
+            self.nbr_zero = nbr_zero
+        else:
+            lines = existing_file.split("\n")
+            self.nbr_zero = int(lines[0])
+            for i in range(1, len(lines)):
+                previous_hash = lines[0]
+                data = lines[0]
+                signature = lines[0]
+                preuve_travail = lines[0]
+                creation_date = lines[0]
+                main_hash = lines[0]
+                index = lines[0]
+                nounce = lines[0]
+                new_block = block.Block(previous_hash, data, signature, preuve_travail, creation_date, main_hash,
+                                        index, nounce)
+                self.blockchaines.append(new_block)
+                self.blockchaines = []
 
     def add_block(self, data, signature):
         if not self.blockchaines:
-            new_block = block.Block("NONE", data, signature, "", 0)
+            new_block = block.Block("NONE", data, signature, "", datetime.now(), "", 0, 0)
         else:
             previous_hash = self.blockchaines[len(self.blockchaines) - 1].hash
-            new_block = block.Block(previous_hash, data, signature, "", len(self.blockchaines))
+            new_block = block.Block(previous_hash, data, signature, "", datetime.now(), "", len(self.blockchaines), 0)
         new_block = new_block.create_hash(self.nbr_zero)
         self.blockchaines.append(new_block)
 
@@ -21,7 +42,8 @@ class Blockchaine:
             if i == 0:
                 is_valid = is_valid and self.blockchaines[i].is_format_hash_ok(self.blockchaines[i].hash, self.nbr_zero)
             else:
-                is_valid = is_valid and self.blockchaines[i].is_format_hash_ok(self.blockchaines[i].previous_hash, self.nbr_zero)
+                is_valid = is_valid and self.blockchaines[i].is_format_hash_ok(self.blockchaines[i].previous_hash,
+                                                                               self.nbr_zero)
                 is_valid = is_valid and self.blockchaines[i].is_format_hash_ok(self.blockchaines[i].hash, self.nbr_zero)
         return is_valid
 
@@ -36,7 +58,7 @@ class Blockchaine:
         is_valid = is_valid and self.is_all_hash_equal_previous_hash()
         return is_valid
 
-    def __str__(self):
+    def afficher(self):
         if not self.blockchaines:
             return "Aucun élément dans la liste."
         result = "Blockchaine vérifiée : " + str(self.is_blockchaine_valid()) + "\n"
@@ -47,9 +69,6 @@ class Blockchaine:
             result += str(self.blockchaines[i])
             result += "\n]\n" 
         return result
-
-    def save(self):
-        print("Sauvegarde réussie ! ")
 
     @staticmethod
     def menu():
@@ -67,9 +86,10 @@ class Blockchaine:
         while choix != "q":
             choix = input("Taper votre choix : ")
             if choix == "a":
-                print(blockchaine)
+                print(blockchaine.afficher())
             elif choix == "s":
-                self.blockchaines.save()
+                file = crud_file.File()
+                file.save(blockchaine, self.nbr_zero)
             elif choix == "x":
                 data = input("Taper votre donnée : ")
                 signature = input("Taper votre signature : ")
@@ -80,7 +100,7 @@ class Blockchaine:
                 print("Au revoir !")
             else:
                 print("Choix incorrect")
-                self.blockchaines.menu()
+                blockchaine.menu()
 
 
 blockchaine = Blockchaine(2)
