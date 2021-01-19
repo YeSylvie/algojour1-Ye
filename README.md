@@ -1,4 +1,4 @@
-#Cours d'algorithme jour 1 
+# Cours d'algorithme jour 1 
 
 ### Groupe TD8 : 
 * TRICHET Laura
