@@ -58,10 +58,56 @@ Le tri par sélection est le moins efficace car c'est celui qui effectue le plus
 # Cours d'algorithme jour 2 
 
 ### Sujet :
-Création d'une blockchaine
+Création d'une blockchaine   
 
-1. api.py    
-Un fichier permettant d'exposer les APIs :
+1. api.py      
+Un fichier permettant d'exposer les APIs :   
+
+    a. GET '/'    
+Affiche Hello World   
+
+    b. GET '/afficher'   
+Affiche toute la blockchaine   
+
+    c. GET '/afficher/block/<i>'     
+Affiche le ième block de la blockchaine  
+Prend en entrée dans l'url i la position du block   
+
+    d. GET '/afficher/block'     
+Affiche le dernier block de la blockchaine      
+
+    e. GET '/is_blockchaine_valid'  
+Retourne si la blockchaine est valide (hash correct...)    
+
+    f. POST '/add_block/<data>/signature/<signature>'    
+Ajoute un block à la blockchaine   
+Prend en entrée un json :    
+{
+    "taille": 2,
+    "block": [
+        {
+            "data": "Genesis block",
+            "signature": "Toto"
+        },
+        {
+            "data": "First block",
+            "signature": "Test"
+        }
+    ]
+}   
+
+    g. POST '/replace_blockchaine'   
+Remplace la blockchaine existante par une nouvelle
+
+    h. POST '/save_all'   
+Sauvegarde toute la blockchaine dans le fichier blockchaine.txt
+
+    i. PUT '/delete'   
+Supprime toute la blockchaine
+
+    j. PUT '/delete/block/<i>'   
+Supprime le block à la position i de la blockchaine
+Prend en entrée dans l'url i la position du block
 
 Pour les tester exécutez les commandes suivantes :   
 ```cd algojour2-YE```   
