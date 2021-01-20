@@ -63,7 +63,8 @@ class Main:
                 if delete == "oui":
                     my_blockchaine.delete_one(int(index))
                 else:
-                    print("Vous avez annulé la suppression du block suivant :\n" + str(my_blockchaine.blockchaines[int(index)]))
+                    print("Vous avez annulé la suppression du block suivant :\n" +
+                          str(my_blockchaine.blockchaines[int(index)]))
             elif choix == "v":
                 print("La blockchaine est valide ? " + str(my_blockchaine.is_blockchaine_valid()))
             elif choix == "m":
