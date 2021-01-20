@@ -40,6 +40,12 @@ class Blockchaine:
             new_block = block.Block(previous_hash, data, signature, "", datetime.now(), "", len(self.blockchaines), 0)
         new_block = new_block.create_hash(self.nbr_zero)
         self.blockchaines.append(new_block)
+    
+    def replace_blockchaine(self, new_blockchaines):
+        if new_blockchaines.is_blockchaine_valid():
+            self.blockchaines = new_blockchaines.blockchaines
+        else :
+            print("ERREUR : la nouvelle blockchaine n'est pas valide")
 
     def delete_all(self):
         if not self.blockchaines:
@@ -77,11 +83,12 @@ class Blockchaine:
     def is_blockchaine_valid(self):
         is_valid = self.is_format_all_hash_valid()
         is_valid = is_valid and self.is_all_hash_equal_previous_hash()
+        is_valid = is_valid and self.blockchaines[0].previous_hash == "NONE"
         return is_valid
 
     def afficher(self):
         if not self.blockchaines:
-            return "Aucun élément dans la liste."
+            return "Aucun block dans la liste."
         result = "Blockchaine vérifiée : " + str(self.is_blockchaine_valid()) + "\n"
         for i in range(len(self.blockchaines)):
             result += "Block n° "
@@ -89,4 +96,25 @@ class Blockchaine:
             result += " : [\n" 
             result += str(self.blockchaines[i])
             result += "\n]\n" 
+        return result
+
+    def afficher_one_block(self, index):
+        if not self.blockchaines or len(self.blockchaines) < index:
+            return "Le block à la position " + str(index) + " n'existe pas."
+        result = "Block n° "
+        result += str(index)
+        result += " : [\n" 
+        result += str(self.blockchaines[index])
+        result += "\n]\n" 
+        return result
+
+    def afficher_last_block(self):
+        if not self.blockchaines:
+            return "Aucun block dans la liste."
+        index = len(self.blockchaines) - 1 
+        result = "Block n° "
+        result += str(index)
+        result += " : [\n" 
+        result += str(self.blockchaines[index])
+        result += "\n]\n" 
         return result
