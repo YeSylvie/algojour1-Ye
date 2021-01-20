@@ -41,6 +41,22 @@ class Blockchaine:
         new_block = new_block.create_hash(self.nbr_zero)
         self.blockchaines.append(new_block)
 
+    def delete_all(self):
+        if not self.blockchaines:
+            print("Aucun élément à supprimer de la blockchaine")
+        else:
+            self.blockchaines = []
+            print("Tous les éléments ont été supprimés de la blockchaine")
+    
+    def delete_one(self, index):
+        if not self.blockchaines:
+            print("Aucun élément à supprimer de la blockchaine")
+        else:
+            del self.blockchaines[index]
+            for i in range(len(self.blockchaines)):
+                self.blockchaines[i].index = i
+            print("Le block " + str(index) + " a été supprimé de la blockchaine")
+
     def is_format_all_hash_valid(self):
         is_valid = True
         for i in range(len(self.blockchaines)):
