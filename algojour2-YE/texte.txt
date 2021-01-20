@@ -1,0 +1,12 @@
+4
+Blockchaine vérifiée : True
+Block n° 0 : [
+	Index : 0
+	Previous Hash : NONE
+	Data : R
+	Signature : Crée par R
+	Preuve de travail : EiJUBgDi
+	Creation Date : 2021-01-20 09:57:02.356759
+	Hash : 000004ab0cd1370ae647547ffcf1db08c2f852f6397d6f56f4395eb27a07c28a
+	Nounce : 14668
+]

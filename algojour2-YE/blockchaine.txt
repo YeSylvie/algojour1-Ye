@@ -1,2 +1,12 @@
-2
-Aucun élément dans la liste.
+4
+Blockchaine vérifiée : True
+Block n° 0 : [
+	Index : 0
+	Previous Hash : NONE
+	Data : T
+	Signature : Crée par T
+	Preuve de travail : EftZFhaZ
+	Creation Date : 2021-01-20 09:45:56.778518
+	Hash : 000096c1c5ec745c71764496d4e24292cea2aaecfaa73199192615b3483d43e4
+	Nounce : 124691
+]

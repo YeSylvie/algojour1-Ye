@@ -7,7 +7,7 @@ class Blockchaine:
     def __init__(self, nbr_zero):
         file = crud_file.File()
         existing_file = file.read()
-        if "" == existing_file or "Aucun élément dans la liste." in existing_file:
+        if "Hello" == existing_file or "Aucun élément dans la liste." in existing_file:
             self.blockchaines = []
             self.nbr_zero = nbr_zero
         else:
@@ -19,13 +19,13 @@ class Blockchaine:
             while i < len(lines):
                 #Avec 8 le nombre de paramètre pour la classe block
                 one_block = lines[i:i+8]
-                previous_hash = one_block[0].split(": ")[1]
-                data = one_block[1].split(": ")[1]
-                signature = one_block[2].split(": ")[1]
-                preuve_travail = one_block[3].split(": ")[1]
-                creation_date = one_block[4].split(": ")[1]
-                main_hash = one_block[5].split(": ")[1]
-                index = one_block[6].split(": ")[1]
+                index = one_block[0].split(": ")[1]
+                previous_hash = one_block[1].split(": ")[1]
+                data = one_block[2].split(": ")[1]
+                signature = one_block[3].split(": ")[1]
+                preuve_travail = one_block[4].split(": ")[1]
+                creation_date = one_block[5].split(": ")[1]
+                main_hash = one_block[6].split(": ")[1]
                 nounce = one_block[7].split(": ")[1]
                 new_block = block.Block(previous_hash, data, signature, preuve_travail, creation_date, main_hash, index, nounce)
                 self.blockchaines.append(new_block)
