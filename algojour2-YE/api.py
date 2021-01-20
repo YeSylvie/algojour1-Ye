@@ -1,5 +1,5 @@
 import flask
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import blockchaine
 import crud_file
 
@@ -9,7 +9,7 @@ my_blockchaine = blockchaine.Blockchaine(3)
 
 @app.route('/')
 def hello_world():
-    return 'Hello world!'
+    return render_template("index.html")
 
 
 @app.route('/afficher', methods=['GET'])
@@ -19,7 +19,7 @@ def afficher_blockchaine():
 
 @app.route('/afficher/block/<i>', methods=['GET'])
 def afficher_one_block(i):
-    return my_blockchaine.afficher_one_block(int(i))
+    return jsonify(my_blockchaine.afficher_one_block(int(i)))
 
 
 @app.route('/afficher/block', methods=['GET'])
