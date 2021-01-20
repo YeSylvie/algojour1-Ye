@@ -1,6 +1,7 @@
 import blockchaine
 import crud_file
 
+
 class Main:
         
     @staticmethod
@@ -14,7 +15,8 @@ class Main:
         affichage += "\n*****************************************"
         print(affichage)
 
-    def choix(self):
+    @staticmethod
+    def choix():
         choix = ""
         my_blockchaine = blockchaine.Blockchaine(4)
         while choix != "q":
@@ -35,7 +37,8 @@ class Main:
             else:
                 print("Choix incorrect")
                 main.menu()
-                
+
+
 main = Main()
 main.menu()
 main.choix()
