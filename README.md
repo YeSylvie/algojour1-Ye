@@ -54,3 +54,81 @@ les listes sont vides ou ne contiennent qu'un seul élément, elles sont toutes 
 Le tri rapide et le tri fusion sont les deux algorithmes les plus rapides et stables car ils font moins de comparaison 
 par rapport au trois autres algorithmes lorsqu'on est sur de longue liste de valeur.   
 Le tri par sélection est le moins efficace car c'est celui qui effectue le plus de comparaison. 
+
+# Cours d'algorithme jour 2 
+
+### Sujet :
+Création d'une blockchaine
+
+1. api.py    
+Un fichier permettant d'exposer les APIs :
+
+Pour les tester exécutez les commandes suivantes :   
+```cd algojour2-YE```   
+```export FLASK_APP=api.py```   
+```flask run```   
+Ensuite pour les méthodes *GET* vous pouvez les exécuter directement via un moteur de recherche, ou sur un logiciel comme *Postman*. Et pour les *PUT* et *POST*, via *Postman* uniquement.
+
+2. block.py   
+
+Un fichier contenant la classe *Block*. Cette classe représente un block d'une blockchaine. Elle possède les attributs :
+
+| Attribut                  | Fonction     | 
+| -------------             | -------------| 
+| previous_hash             | Le hash du block précédent de la blockchaine (s'il s'agit du premier, sa valeur est *NONE*) | 
+| data                      | La donnée du block      |  
+| proof_of_work             | La preuve de travail     |
+| creation_date             | La date de création du block     |
+| hash                      | Le hash du block, qui respecte la règle de n zéro (définie lors de la création de la blockchaine)     |
+| index                     | La position du block dans la blockchaine     |
+| nounce                    | Le nombre de fois qu'on a regénéré le hash   |   
+
+
+
+Elle possède les méthodes suivantes :
+- is_format_hash_ok
+- generate_preuvre_travail
+- create_hash
+
+Permettant de créer un block, en générant une preuve de travail, et un hash. 
+
+3. blockchaine.py    
+
+Un fichier contenant la classe *Blockchaine*. Cette classe représente une blockchaine et possède les attributs :
+
+| Attribut                  | Fonction     | 
+| -------------             | -------------| 
+| blockchaines             | Une liste de Block, représentant la blockchaine | 
+| nbr_zero                  | Le nombre de 0 à avoir en début de la chaine du hash, pour que le block soit crée      |  
+
+Elle possède les méthodes suivantes :
+- add_block
+- replace_blockchaine
+- delete_all
+- delete_one
+- is_format_all_hash_valid
+- is_all_hash_equal_previous_hash
+- is_blockchaine_valid
+- afficher
+- afficher_one_block
+- afficher_last_block
+
+Permettant de créer une blockchaine, de lui ajouter ou supprimer des blocks, et de l'afficher ainsi que son/ses blocks. 
+
+4. blockchaine.txt  
+
+Le fichier permettant de stocket le nombre de 0 souhaité pour la blockchaine sauvegardée dans ce fichier.
+
+3. crud_file.py  
+
+Un fichier contenant la classe *File*. 
+Elle possède les méthodes suivantes :
+- save
+- read
+Cette classe permet de lire et écrire dans le fichier *blockchaine.txt* pour sauvegarder la blockchaine, et la récupérer lors du relancement du server.
+
+3. main.py  
+
+Un fichier permettant de créer, et gérer une blockchaine, grâce à un menu. Pour tester notre code, exécuter la commande :   
+```python3 main.py```   
+ Un menu s'affiche proposant les différents choix possibles.
