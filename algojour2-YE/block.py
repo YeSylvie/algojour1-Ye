@@ -4,11 +4,11 @@ from hashlib import sha256
 
 
 class Block:
-    def __init__(self, previous_hash, data, signature, preuve_travail, creation_date, main_hash, index, nounce):
+    def __init__(self, previous_hash, data, signature, proof_of_work, creation_date, main_hash, index, nounce):
         self.previous_hash = previous_hash
         self.data = data
         self.signature = signature
-        self.preuve_travail = preuve_travail
+        self.proof_of_work = proof_of_work
         self.creation_date = creation_date
         self.hash = main_hash
         self.index = index
@@ -24,10 +24,10 @@ class Block:
     def generate_preuvre_travail(self):
         letters = string.ascii_letters
         result_str = ''.join(random.choice(letters) for i in range(8))
-        return self.preuve_travail + result_str
+        return self.proof_of_work + result_str
 
     def create_hash(self, nbr_zero):
-        new_preuve_travail = self.preuve_travail
+        new_preuve_travail = self.proof_of_work
         bloc = str(self.previous_hash) + str(self.data) + str(self.signature) + str(new_preuve_travail) \
             + str(self.creation_date)
         hash_block = sha256(bloc.encode('utf-8')).hexdigest()
@@ -40,7 +40,7 @@ class Block:
             hash_block = sha256(bloc.encode('utf-8')).hexdigest()
         self.hash = hash_block
         self.nounce = nounce
-        self.preuve_travail = new_preuve_travail
+        self.proof_of_work = new_preuve_travail
         return self
 
     def __str__(self):
@@ -48,7 +48,7 @@ class Block:
             + "\n\tPrevious Hash : " + self.previous_hash \
             + "\n\tData : " + self.data \
             + "\n\tSignature : " + self.signature \
-            + "\n\tPreuve de travail : " + self.preuve_travail \
+            + "\n\tPreuve de travail : " + self.proof_of_work \
             + "\n\tCreation Date : " + str(self.creation_date) \
             + "\n\tHash : " + self.hash \
             + "\n\tNounce : " + str(self.nounce)

@@ -165,7 +165,7 @@ Permettant de créer une blockchaine, de lui ajouter ou supprimer des blocks, et
 
 Le fichier permettant de stocket le nombre de 0 souhaité pour la blockchaine sauvegardée dans ce fichier.
 
-3. crud_file.py  
+5. crud_file.py  
 
 Un fichier contenant la classe *File*. 
 Elle possède les méthodes suivantes :
@@ -173,7 +173,7 @@ Elle possède les méthodes suivantes :
 - read
 Cette classe permet de lire et écrire dans le fichier *blockchaine.txt* pour sauvegarder la blockchaine, et la récupérer lors du relancement du server.
 
-3. main.py  
+6. main.py  
 
 Un fichier permettant de créer, et gérer une blockchaine, grâce à un menu. Pour tester notre code, exécuter la commande :   
 ```python3 main.py```   

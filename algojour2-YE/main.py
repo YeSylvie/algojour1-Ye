@@ -58,13 +58,16 @@ class Main:
                     print("Vous avez annulé la suppression de la blockchaine")
             elif choix == "r":
                 index = input("Quel block voulez-vous supprimer (rentrer l'index) : ")
-                print("Le block a supprimé est : \n" + str(my_blockchaine.blockchaines[int(index)]))
-                delete = input("Etes-vous sure de vouloir supprimer ce block (oui/non) : ")
-                if delete == "oui":
-                    my_blockchaine.delete_one(int(index))
+                if len(my_blockchaine.blockchaines) < int(index):
+                    print("Erreur : index supérieur à la taille de la blockchaine")
                 else:
-                    print("Vous avez annulé la suppression du block suivant :\n" +
-                          str(my_blockchaine.blockchaines[int(index)]))
+                    print("Le block a supprimé est : \n" + str(my_blockchaine.blockchaines[int(index)]))
+                    delete = input("Etes-vous sure de vouloir supprimer ce block (oui/non) : ")
+                    if delete == "oui":
+                        my_blockchaine.delete_one(int(index))
+                    else:
+                        print("Vous avez annulé la suppression du block suivant :\n" +
+                              str(my_blockchaine.blockchaines[int(index)]))
             elif choix == "v":
                 print("La blockchaine est valide ? " + str(my_blockchaine.is_blockchaine_valid()))
             elif choix == "m":

@@ -57,6 +57,8 @@ class Blockchaine:
     def delete_one(self, index):
         if not self.blockchaines:
             print("Aucun élément à supprimer de la blockchaine")
+        elif len(self.blockchaines) > index:
+            print("Erreur : index supérieur à la taille de la blockchaine")
         else:
             del self.blockchaines[index]
             for i in range(len(self.blockchaines)):
